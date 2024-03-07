@@ -78,6 +78,7 @@ body {
     border-radius: 5px; /* 5px rounded corners */
     overflow: hidden;
     background-color: #fff; /* White background color */
+    height: 100%;
 }
 
 .card:hover {
@@ -86,6 +87,10 @@ body {
 
 .card-body {
     padding: 10px 16px;
+}
+
+.card-img-top {
+    height: 12rem;
 }
 
 .card-title {
