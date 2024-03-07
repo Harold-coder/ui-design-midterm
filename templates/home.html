@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 popular">
+    <h2>Popular Supercars</h2>
+    <div id="popular-items" class="row"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}

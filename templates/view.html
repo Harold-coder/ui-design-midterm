@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 view-page">
+    <h2>{{ item.name }}</h2>
+    <p>{{ item.description }}</p>
+    <p>Year: {{ item.year }}</p>
+    <p>Price: ${{ item.price }}</p>
+    <h3>Specifications</h3>
+    <ul>
+        {% for spec in item.specs %}
+        <li>{{ spec }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Similar Models</h3>
+    <ul>
+        {% for model in item.similar_models %}
+        <li>{{ model }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %}

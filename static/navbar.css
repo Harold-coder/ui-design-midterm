@@ -1,0 +1,140 @@
+/* navbar.css */
+.navbar {
+    background-color: #333; /* Dark background */
+    overflow: hidden;
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.navbar input[type="text"] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.navbar button {
+    float: left;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar button:hover {
+    background: rgb(192, 190, 190);
+}
+  
+.search-btn {
+    margin-left: 5px;
+}
+
+.search-input {
+    margin-top: 8px;
+}
+
+/* Container styling */
+#popular-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Card styling */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    overflow: hidden;
+    background-color: #fff; /* White background color */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-body {
+    padding: 10px 16px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333; /* Dark grey color */
+}
+
+.card-text {
+    font-size: 16px;
+    color: #777; /* Light grey color */
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive cards */
+@media (max-width: 600px) {
+    #popular-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%; /* Adjust width for small screens */
+    }
+}
+
+.results {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
+.view-page {
+    padding-top: 5rem;
+}
+
+.popular {
+    padding-top: 5rem;
+}
