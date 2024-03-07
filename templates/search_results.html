@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2 class="results">Showing Results for "{{ query }}"</h2>
-    {% if items %}
-        <div class="list-group">
-            {% for item in items %}
-                <a href="/view/{{ item.id }}" class="list-group-item list-group-item-action">
-                    {{ item.name }}
-                </a>
-            {% endfor %}
-        </div>
+<div class="container mt-5">
+    <h2>Search Results for "{{ query }}"</h2>
+    <p>{{ count_matching }} result(s) found.</p>
+    {% if count_matching > 0 %}
+    <div class="list-group">
+        {% for item in items %}
+        <a href="/view/{{ item.id }}" class="list-group-item list-group-item-action">
+            <h5 class="mb-1">{{ item.name }}</h5>
+            <p class="mb-1">{{ item.description }}</p>
+            <small>Year: {{ item.year }}</small>
+        </a>
+        {% endfor %}
+    </div>
     {% else %}
-        <p>No results found</p>
+    <p>No matches found.</p>
     {% endif %}
 </div>
 {% endblock %}

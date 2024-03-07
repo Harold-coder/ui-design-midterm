@@ -143,17 +143,26 @@ def home():
 
 @app.route('/search')
 def search():
-    print("Searching!!!!")
     query = request.args.get('query', '').strip()
     if not query:
         # Redirect back to the home page if the query is all whitespace
         return redirect(url_for('home'))
 
-    # Search through the titles of items for the query text
-    matching_items = [item for item in supercars if query.lower() in item['name'].lower()]
+    # Convert the query to lowercase to make the search case-insensitive
+    query_lower = query.lower()
+
+    # Search through the titles, descriptions, and years of items for the query text
+    # This makes the search case-insensitive and searches across multiple fields
+    matching_items = [item for item in supercars if query_lower in item['name'].lower() or 
+                      query_lower in item['description'].lower() or 
+                      query_lower in str(item['year']).lower()]
+
+    # Count the number of matching results
+    count_matching = len(matching_items)
     
     # Render a template for search results
-    return render_template('search_results.html', items=matching_items, query=query)
+    return render_template('search_results.html', items=matching_items, query=query, count_matching=count_matching)
+
 
 
 @app.route('/view/<id>')

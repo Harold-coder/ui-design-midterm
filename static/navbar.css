@@ -43,7 +43,6 @@ body {
 .navbar button {
     float: left;
     padding: 6px 10px;
-    margin-top: 8px;
     margin-right: 16px;
     background: #ddd;
     font-size: 17px;
@@ -60,7 +59,7 @@ body {
 }
 
 .search-input {
-    margin-top: 8px;
+    margin-top: 4px;
 }
 
 /* Container styling */
@@ -142,4 +141,9 @@ body {
 
 .popular {
     padding-top: 5rem;
+}
+
+mark {
+    background-color: yellow;
+    color: black;
 }
