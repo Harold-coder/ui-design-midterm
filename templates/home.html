@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4 popular">
-    <h2>Popular Supercars</h2>
-    <div id="popular-items" class="row"></div>
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Supercars Search!</h1>
+        <p class="lead">Discover the world's most extraordinary supercars, from classic models to the latest in high-performance technology.</p>
+        <hr class="my-4">
+        <p>Explore specifications, compare similar models, and dive deep into the details of your dream car.</p>
+    </div>
+    <div class="row" id="featured-supercars">
+        {% for supercar in featured_supercars %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/' + supercar.id + '.png') }}" class="card-img-top" alt="{{ supercar.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ supercar.name }}</h5>
+                    <p class="card-text">{{ supercar.description }}</p>
+                    <a href="/view/{{ supercar.id }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}        
+    </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock %}

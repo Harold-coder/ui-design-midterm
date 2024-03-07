@@ -107,7 +107,7 @@ supercars = [
       "similar_models": ["Aston Martin Vantage", "Jaguar F-Type SVR"]
     },
     {
-      "id": "13",
+      "id": "12",
       "name": "McLaren P1",
       "description": "A hybrid hypercar that's part of the ultimate series, pushing the boundaries of performance.",
       "year": "2013",
@@ -116,7 +116,7 @@ supercars = [
       "similar_models": ["LaFerrari", "Porsche 918 Spyder"]
     },
     {
-      "id": "14",
+      "id": "13",
       "name": "Lamborghini Huracán Performante",
       "description": "Redefines the concept of super sports cars, integrating aerodynamic performance and improved power.",
       "year": "2017",
@@ -125,7 +125,7 @@ supercars = [
       "similar_models": ["Audi R8 V10 Performance", "Porsche 911 GT3 RS"]
     },
    {
-      "id": "15",
+      "id": "14",
       "name": "Aston Martin Valkyrie",
       "description": "A revolutionary hypercar engineered to be a dynamic yet luxurious vehicle.",
       "year": "2021",
@@ -138,7 +138,8 @@ supercars = [
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    featured_supercars = supercars[:3]  # Select the first three entries to feature on the Home page
+    return render_template('home.html', featured_supercars=featured_supercars)
 
 @app.route('/search')
 def search():
