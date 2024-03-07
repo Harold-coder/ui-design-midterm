@@ -1,0 +1,17 @@
+<!-- add_car.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add New Supercar</h2>
+    <form id="add-car-form" action="{{ url_for('add_car') }}" method="post">
+        <!-- Include all necessary form fields here -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <!-- Add other fields similarly -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

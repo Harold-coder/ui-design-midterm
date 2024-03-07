@@ -45,3 +45,31 @@ function highlightSearchTerms() {
       }
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('add-car-form');
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      // Collect form data
+      const formData = new FormData(form);
+  
+      // Send POST request with Fetch API
+      fetch('/add', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          // Handle success, e.g., show success message, redirect, etc.
+        } else {
+          // Handle error, e.g., show error message
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  }
+});
+

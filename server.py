@@ -163,6 +163,41 @@ def search():
     # Render a template for search results
     return render_template('search_results.html', items=matching_items, query=query, count_matching=count_matching)
 
+@app.route('/add', methods=['GET', 'POST'])
+def add_car():
+    if request.method == 'POST':
+        # Extract the data from request.form or request.json
+        name = request.form.get('name', '').strip()
+        description = request.form.get('description', '').strip()
+        year = request.form.get('year', '').strip()
+        price = request.form.get('price', '').strip()
+        # Add validation for specs and similar_models if they're part of the form
+
+        # Validate the data
+        if not name or not description or not year.isdigit() or not price.isdigit():
+            # Return error if validation fails
+            return jsonify({'status': 'error', 'message': 'Invalid input'}), 400
+
+        # Create the new car entry
+        global current_id
+        new_car = {
+            'id': str(current_id + 1),
+            'name': name,
+            'description': description,
+            'year': year,
+            'price': price,
+            # Include specs and similar_models with proper validation
+        }
+        supercars.append(new_car)
+        current_id += 1
+
+        # Return a success message with the new item's ID
+        return jsonify({'status': 'success', 'id': new_car['id']})
+
+    else:
+        # Display the form for a GET request
+        return render_template('add_car.html')
+
 
 
 @app.route('/view/<id>')

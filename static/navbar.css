@@ -53,6 +53,21 @@ body {
 .navbar button:hover {
     background: rgb(192, 190, 190);
 }
+
+.nav-link {
+    color: white; /* Text color */
+    background-color: #28a745; /* Green background */
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #fff; /* Text color on hover/focus */
+    background-color: #218838; /* Darker green background on hover/focus */
+    text-decoration: none; /* No underline on hover/focus */
+}
   
 .search-btn {
     margin-left: 5px;
