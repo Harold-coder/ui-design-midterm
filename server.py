@@ -232,5 +232,28 @@ def view(id):
         abort(404)  # Not found
     return render_template('view.html', item=item)
 
+
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+def edit_car(id):
+    car = next((item for item in supercars if item['id'] == id), None)
+    if not car:
+        abort(404)  # If the car doesn't exist, return a 404 error
+
+    if request.method == 'POST':
+        # Process the updated data
+        car['name'] = request.form['name']
+        car['description'] = request.form['description']
+        car['year'] = request.form['year']
+        car['price'] = request.form['price']
+        car['image'] = request.form['image']
+        # Add any additional fields here
+        
+        # After updating, redirect to the view page for this car
+        return redirect(url_for('view', id=id))
+
+    # If it's a GET request, show the edit page with pre-populated data
+    return render_template('edit_car.html', car=car)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

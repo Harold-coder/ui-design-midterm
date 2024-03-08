@@ -19,6 +19,8 @@
         <li>{{ model }}</li>
         {% endfor %}
     </ul>
+    <!-- In your view.html template, add a button to go to the edit page -->
+    <a href="{{ url_for('edit_car', id=item['id']) }}" class="btn btn-secondary">Edit Car</a>
     <a href="/" class="btn btn-primary">Back to Home</a>
 </div>
 {% endblock %}

@@ -1,0 +1,51 @@
+<!-- edit_car.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Car: {{ car['name'] }}</h2>
+    <form id="edit-car-form" action="{{ url_for('edit_car', id=car['id']) }}" method="post">
+        <div class="mb-3">
+            <label for="carName" class="form-label">Car Name</label>
+            <input type="text" class="form-control" id="carName" name="name" value="{{ car['name'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="carDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="carDescription" name="description" required>{{ car['description'] }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="carYear" class="form-label">Year</label>
+            <input type="number" class="form-control" id="carYear" name="year" value="{{ car['year'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="carPrice" class="form-label">Price</label>
+            <input type="text" class="form-control" id="carPrice" name="price" value="{{ car['price'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="carImage" class="form-label">Car Image URL</label>
+            <input type="text" class="form-control" id="carImage" name="image" value="{{ car['image'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="carSpecs" class="form-label">Specifications</label>
+            <input type="text" class="form-control" id="carSpecs" name="specs" value="{{ car['specs']|join(', ') }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="carModels" class="form-label">Similar Models</label>
+            <input type="text" class="form-control" id="carModels" name="similar_models" value="{{ car['similar_models']|join(', ') }}" required>
+        </div>
+        <div class="mb-3 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class = "btn btn-warning" onclick="confirmDiscardChanges()">Discard Changes</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function confirmDiscardChanges() {
+        if (confirm('Are you sure you want to discard your changes?')) {
+            window.location.href = "{{ url_for('view', id=car['id']) }}";
+        }
+    }
+</script>
+
+{% endblock %}
