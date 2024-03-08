@@ -2,15 +2,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Add New Supercar</h2>
-    <form id="add-car-form" action="{{ url_for('add_car') }}" method="post">
-        <!-- Include all necessary form fields here -->
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+<div class="container mt-5">
+    <div id="success-message" style="display: none;"></div>
+    <h2>Add New Car</h2>
+    <form id="add-car-form" method="post" enctype="multipart/form-data">
+        <!-- enctype is important for file upload -->
+        <div class="mb-3">
+            <label for="carName" class="form-label">Car Name</label>
+            <input type="text" class="form-control" id="carName" name="name" required>
         </div>
-        <!-- Add other fields similarly -->
+        <div class="mb-3">
+            <label for="carDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="carDescription" name="description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="carYear" class="form-label">Year</label>
+            <input type="number" class="form-control" id="carYear" name="year" required>
+        </div>
+        <div class="mb-3">
+            <label for="carPrice" class="form-label">Price</label>
+            <input type="text" class="form-control" id="carPrice" name="price" required>
+        </div>
+        <div class="mb-3">
+            <label for="carSpecs" class="form-label">Specifications</label>
+            <input type="text" class="form-control" id="carSpecs" name="specs" placeholder="Comma-separated values" required>
+        </div>
+        <div class="mb-3">
+            <label for="carModels" class="form-label">Similar Models</label>
+            <input type="text" class="form-control" id="carModels" name="similar_models" placeholder="Comma-separated values" required>
+        </div>
+        <div class="mb-3">
+            <label for="carImage" class="form-label">Car Image URL</label>
+            <input type="text" class="form-control" id="carImage" name="image" placeholder="http://example.com/image.jpg" required>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

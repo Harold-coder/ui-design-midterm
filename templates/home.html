@@ -12,7 +12,7 @@
         {% for supercar in featured_supercars %}
         <div class="col-md-4 mb-4">
             <div class="card">
-                <img src="{{ url_for('static', filename='images/' + supercar.id + '.png') }}" class="card-img-top" alt="{{ supercar.name }}">
+                <img src="{{ supercar.image }}" class="card-img-top" alt="{{ supercar.name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ supercar.name }}</h5>
                     <p class="card-text">{{ supercar.description }}</p>

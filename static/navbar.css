@@ -58,6 +58,7 @@ body {
     color: white; /* Text color */
     background-color: #28a745; /* Green background */
     padding: 6px 12px;
+    font-size: 1.25rem;
     border-radius: 4px;
     text-decoration: none;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
@@ -166,4 +167,8 @@ body {
 mark {
     background-color: yellow;
     color: black;
+}
+
+.add-car-container {
+    padding-top: 2rem;
 }

@@ -3,6 +3,7 @@
 {% block content %}
 <div class="container mt-4 view-page">
     <h2>{{ item.name }}</h2>
+    <img src="{{ item.image }}" class="img-fluid" alt="Image of {{ item.name }}">
     <p>{{ item.description }}</p>
     <p>Year: {{ item.year }}</p>
     <p>Price: ${{ item.price }}</p>

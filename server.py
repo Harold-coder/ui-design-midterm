@@ -6,6 +6,9 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify, a
 
 app = Flask(__name__)
 
+# Sample car to add:
+# https://i.ibb.co/yNSHd4K/Screenshot-2024-03-08-at-12-41-54.png
+
 supercars = [
     {
       "id": "1",
@@ -14,6 +17,7 @@ supercars = [
       "year": "2020",
       "price": "550000",
       "specs": ["V8 engine", "986 hp", "2.5 sec 0-60 mph"],
+      "image": "https://i.ibb.co/Mcjz7VB/1.png",
       "similar_models": ["McLaren P1", "Porsche 918 Spyder"]
     },
     {
@@ -23,6 +27,7 @@ supercars = [
       "year": "2019",
       "price": "600000",
       "specs": ["V12 engine", "759 hp", "2.8 sec 0-60 mph"],
+      "image": "https://i.ibb.co/MpntqNW/2.png",
       "similar_models": ["Ferrari 812 Superfast", "Bugatti Chiron"]
     },
     {
@@ -32,6 +37,7 @@ supercars = [
       "year": "2018",
       "price": "300000",
       "specs": ["Twin-turbo V8 engine", "710 hp", "2.9 sec 0-60 mph"],
+      "image": "https://i.ibb.co/0y9CvSW/3.png",
       "similar_models": ["Ferrari F8 Tributo", "Lamborghini Huracán EVO"]
     },
     {
@@ -41,6 +47,7 @@ supercars = [
       "year": "2017",
       "price": "3000000",
       "specs": ["Quad-turbocharged W16 engine", "1500 hp", "2.4 sec 0-60 mph"],
+      "image": "https://i.ibb.co/1JcHhzg/4.png",
       "similar_models": ["Koenigsegg Agera RS", "Hennessey Venom F5"]
     },
     {
@@ -50,6 +57,7 @@ supercars = [
       "year": "2018",
       "price": "293200",
       "specs": ["Twin-turbo flat-six engine", "700 hp", "2.7 sec 0-60 mph"],
+      "image": "https://i.ibb.co/5KT9jr5/5.png",
       "similar_models": ["Chevrolet Corvette ZR1", "Nissan GT-R NISMO"]
     },
     {
@@ -59,6 +67,7 @@ supercars = [
       "year": "2020",
       "price": "316300",
       "specs": ["5.2L V12 engine", "715 hp", "3.4 sec 0-60 mph"],
+      "image": "https://i.ibb.co/hWH97cv/6.png",
       "similar_models": ["Bentley Continental GT", "Mercedes-AMG GT R"]
     },
     {
@@ -68,6 +77,7 @@ supercars = [
       "year": "2021",
       "price": "325000",
       "specs": ["4.0L V8 BiTurbo engine", "720 hp", "3.1 sec 0-60 mph"],
+      "image": "https://i.ibb.co/MCTqCwN/7.png",
       "similar_models": ["McLaren 600LT", "Ferrari 488 Pista"]
     },
     {
@@ -77,6 +87,7 @@ supercars = [
       "year": "2021",
       "price": "3000000",
       "specs": ["5.0L Twin-Turbo V8 engine", "1600 hp", "2.5 sec 0-60 mph"],
+      "image": "https://i.ibb.co/vQZ3Hw3/8.png",
       "similar_models": ["Pagani Huayra", "Lotus Evija"]
     },
     {
@@ -86,6 +97,7 @@ supercars = [
       "year": "2017",
       "price": "2500000",
       "specs": ["6.0L Twin-Turbo V12 engine", "790 hp", "2.8 sec 0-60 mph"],
+      "image": "https://i.ibb.co/0J3XNzF/9.png",
       "similar_models": ["Lamborghini Centenario", "Ferrari LaFerrari"]
     },
     {
@@ -95,6 +107,7 @@ supercars = [
       "year": "2019",
       "price": "350000",
       "specs": ["3.9L Twin-Turbo V8 engine", "711 hp", "2.85 sec 0-60 mph"],
+      "image": "https://i.ibb.co/T8p87jd/10.png",
       "similar_models": ["Porsche 911 GT3 RS", "Audi R8 V10 Performance"]
     },
     {
@@ -104,6 +117,7 @@ supercars = [
       "year": "2021",
       "price": "210000",
       "specs": ["3.0L Twin-Turbo V6 engine", "621 hp", "2.9 sec 0-60 mph"],
+      "image": "https://i.ibb.co/ZHVfc3V/11.png",
       "similar_models": ["Aston Martin Vantage", "Jaguar F-Type SVR"]
     },
     {
@@ -113,6 +127,7 @@ supercars = [
       "year": "2013",
       "price": "1150000",
       "specs": ["Twin-turbo V8 engine", "903 hp", "2.8 sec 0-60 mph"],
+      "image": "https://i.ibb.co/9V1cwhC/12.png",
       "similar_models": ["LaFerrari", "Porsche 918 Spyder"]
     },
     {
@@ -122,6 +137,7 @@ supercars = [
       "year": "2017",
       "price": "274390",
       "specs": ["V10 engine", "631 hp", "2.9 sec 0-60 mph"],
+      "image": "https://i.ibb.co/JK50Hhm/13.png",
       "similar_models": ["Audi R8 V10 Performance", "Porsche 911 GT3 RS"]
     },
    {
@@ -131,6 +147,7 @@ supercars = [
       "year": "2021",
       "price": "3000000",
       "specs": ["Cosworth V12 engine", "1139 hp", "2.5 sec 0-60 mph"],
+      "image": "https://i.ibb.co/xM5tXMZ/14.png",
       "similar_models": ["McLaren Senna", "Mercedes-AMG One"]
     }
 ]
@@ -177,15 +194,22 @@ def add_car():
         if not name or not description or not year.isdigit() or not price.isdigit():
             # Return error if validation fails
             return jsonify({'status': 'error', 'message': 'Invalid input'}), 400
+        
+        # Get the image URL
+        image_url = request.form.get('image', '').strip()
+        if not image_url:
+            # Return error if no image URL is provided
+            return jsonify({'status': 'error', 'message': 'Image URL is required'}), 400
 
+        current_id = len(supercars)
         # Create the new car entry
-        global current_id
         new_car = {
             'id': str(current_id + 1),
             'name': name,
             'description': description,
             'year': year,
             'price': price,
+            'image': image_url
             # Include specs and similar_models with proper validation
         }
         supercars.append(new_car)
