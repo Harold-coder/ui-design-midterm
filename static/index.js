@@ -1,6 +1,6 @@
 // index.js
 // Author: Harold Castiaux
-// video link: https://youtu.be/EEJjbpuDxJU
+// video link: 
 
 document.addEventListener('DOMContentLoaded', function() {
   const searchForm = document.getElementById('search-form');

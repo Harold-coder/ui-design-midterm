@@ -1,10 +1,11 @@
 /* navbar.css */
 body {
-    padding-top: 45px; /* Adjust this value based on the actual navbar height */
+    padding-top: 45px;
+    background-color: #dcdce4; 
 }
 
 .navbar {
-    background-color: #333; /* Dark background */
+    background-color: #5f4b8b;
     overflow: hidden;
     position: fixed; /* Fixed at the top */
     top: 0;
@@ -14,21 +15,13 @@ body {
 .navbar a {
     float: left;
     display: block;
-    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
     border-radius: 10px;
-}
-
-.navbar a.active {
-    background-color: #04AA6D;
-    color: white;
 }
 
 .navbar input[type="text"] {
@@ -50,28 +43,27 @@ body {
     cursor: pointer;
 }
 
-.navbar button:hover {
-    background: rgb(192, 190, 190);
-}
-
 .nav-link {
-    color: white; /* Text color */
-    background-color: #28a745; /* Green background */
     padding: 6px 12px;
     font-size: 1.25rem;
-    border-radius: 4px;
+    border-radius: 10px;
     text-decoration: none;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-.nav-link:hover, .nav-link:focus {
-    color: #fff; /* Text color on hover/focus */
-    background-color: #218838; /* Darker green background on hover/focus */
-    text-decoration: none; /* No underline on hover/focus */
+.navbar {
+    background-color: #4b0082; /* A purple color for the base */
+}
+
+.navbar .nav-link {
+    background-color: #ffd700; /* A gold color for the accent */
+    color: #4b0082;
 }
   
 .search-btn {
     margin-left: 5px;
+    background-color: #ffd700; /* A gold color for the accent */
+    color: #4b0082;
 }
 
 .search-input {
@@ -122,8 +114,16 @@ body {
     margin-bottom: 15px;
 }
 
+.card-title, .card-text {
+    color: #5f4b8b; /* Deep purple for text */
+}
+
+/* Other Elements */
+h1, h2, h3, h4, h5, h6 {
+    color: #5f4b8b; /* Deep purple for headers */
+}
+
 .btn-primary {
-    background-color: #007bff;
     color: white;
     padding: 10px 24px;
     border: none;
@@ -135,8 +135,15 @@ body {
     font-size: 16px;
 }
 
+.btn-primary {
+    background-color: #5f4b8b; /* Deep purple */
+    color: #fff; /* White text for contrast */
+    border: 1px solid #ffd700; /* Gold border */
+}
+
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #473d7b; /* Slightly lighter purple for hover */
+    border-color: #ffc700; /* Slightly lighter gold for hover border */
 }
 
 /* Responsive cards */
@@ -171,4 +178,144 @@ mark {
 
 .add-car-container {
     padding-top: 2rem;
+}
+
+
+.view-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.view-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.view-main {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.view-image {
+    max-width: 70%;
+    height: auto;
+    margin-right: 2rem;
+    border-radius: 10px;
+}
+
+.view-details {
+    flex: 1;
+}
+
+.view-details p{
+    font-size: 1.3rem;
+}
+
+.view-description {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    width: 50%;
+}
+
+.view-specs {
+    margin-bottom: 1rem;
+}
+
+.view-models {
+    list-style: none;
+    padding: 0;
+}
+
+.view-models li {
+    margin-bottom: 0.5rem;
+}
+
+.similarity {
+    text-align: center;
+}
+
+.view-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-btn, .home-btn {
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    margin: 0 auto; 
+    display: block; 
+    margin-top: 1rem; 
+    margin-bottom: 1rem;
+}
+
+.edit-btn {
+    background-color: #007bff;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.home-btn {
+    background-color: #28a745;
+}
+
+.home-btn:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    .view-main {
+        flex-direction: column;
+    }
+
+    .view-image {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+.navbar-brand {
+    background-color: #ffd700;
+    color: #4b0082;
+    border-radius: 10px;
+}
+
+.edit-btn {
+    background-color: #4b0082;
+    color: #ffc700;
+}
+
+
+.navbar .navbar-brand:hover,
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #fff; /* White text on hover/focus */
+    background-color: #5f4b8b; /* Purple background on hover/focus */
+}
+
+.navbar .search-btn {
+    background-color: #ffd700; /* Gold color for the search button */
+    color: #5f4b8b; /* Purple text for the search button */
+    border: 1px solid #5f4b8b; /* Purple border for the search button */
+}
+
+.navbar .search-btn:hover {
+    background-color: #e6c200; /* Slightly darker gold on hover */
+    border-color: #4b3c6b; /* Slightly darker purple for the border on hover */
+}
+
+.home-btn {
+    background-color: #e6c200; /* Slightly darker gold on hover */
+    border-color: #4b3c6b; /* Slightly darker purple for the border on hover */
+}
+
+.view-models {
+    font-size: 1.05rem;
+    color: #473d7b;
 }

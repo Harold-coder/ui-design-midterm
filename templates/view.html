@@ -1,26 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4 view-page">
-    <h2>{{ item.name }}</h2>
-    <img src="{{ item.image }}" class="img-fluid" alt="Image of {{ item.name }}">
-    <p>{{ item.description }}</p>
-    <p>Year: {{ item.year }}</p>
-    <p>Price: ${{ item.price }}</p>
-    <h3>Specifications</h3>
-    <ul>
-        {% for spec in item.specs %}
-        <li>{{ spec }}</li>
-        {% endfor %}
-    </ul>
-    <h3>Similar Models</h3>
-    <ul>
-        {% for model in item.similar_models %}
-        <li>{{ model }}</li>
-        {% endfor %}
-    </ul>
-    <!-- In your view.html template, add a button to go to the edit page -->
-    <a href="{{ url_for('edit_car', id=item['id']) }}" class="btn btn-secondary">Edit Car</a>
-    <a href="/" class="btn btn-primary">Back to Home</a>
+<div class="view-container">
+    <h1 class="view-title">{{ item.name }}</h1>
+    <p class="view-description">{{ item.description }}</p>
+    <div class="view-main">
+        <img src="{{ item.image }}" class="view-image" alt="Image of {{ item.name }}">
+        <div class="view-details">
+            <div class="view-specs">
+                <h2>Specifications:</h2>
+                <p>{{ item.specs[0] }}</p>
+                <p>{{ item.specs[1] }}</p>
+                <p>{{ item.specs[2] }}</p>
+            </div>
+            <div class="view-meta">
+                <p>Year: {{ item.year }}</p>
+                <p>Price: ${{ item.price }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="similarity">
+        <h2>Similar Models:</h2>
+        <ul class="view-models">
+            {% for model in item.similar_models %}
+            <li>{{ model }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="view-actions">
+        <a href="{{ url_for('edit_car', id=item['id']) }}" class="btn edit-btn">Edit Car</a>
+        <a href="/" class="btn home-btn">Back to Home</a>
+    </div>
 </div>
 {% endblock %}

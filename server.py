@@ -1,13 +1,10 @@
 # server.py
 #Author: Harold Castiaux
-# video link: https://youtu.be/EEJjbpuDxJU
+# video link: 
 
 from flask import Flask, render_template, request, redirect, url_for, jsonify, abort
 
 app = Flask(__name__)
-
-# Sample car to add:
-# https://i.ibb.co/yNSHd4K/Screenshot-2024-03-08-at-12-41-54.png
 
 supercars = [
     {
@@ -188,7 +185,9 @@ def add_car():
         description = request.form.get('description', '').strip()
         year = request.form.get('year', '').strip()
         price = request.form.get('price', '').strip()
-        # Add validation for specs and similar_models if they're part of the form
+        specs = [model.strip() for model in request.form.get('specs', '').split(',')]
+        similar_models = [model.strip() for model in request.form.get('similar_models', '').split(',')]
+
 
         # Validate the data
         if not name or not description or not year.isdigit() or not price.isdigit():
@@ -209,8 +208,9 @@ def add_car():
             'description': description,
             'year': year,
             'price': price,
-            'image': image_url
-            # Include specs and similar_models with proper validation
+            'image': image_url,
+            'specs': specs,
+            'similar_models': similar_models
         }
         supercars.append(new_car)
         current_id += 1
@@ -256,4 +256,4 @@ def edit_car(id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=4000)

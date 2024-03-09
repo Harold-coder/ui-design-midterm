@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="jumbotron">
+<div class="container mt-5 home-container">
+    <div class="jumbotron home-jumbotron">
         <h1 class="display-4">Welcome to Supercars Search!</h1>
         <p class="lead">Discover the world's most extraordinary supercars, from classic models to the latest in high-performance technology.</p>
         <hr class="my-4">
@@ -11,12 +11,12 @@
     <div class="row" id="featured-supercars">
         {% for supercar in featured_supercars %}
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ supercar.image }}" class="card-img-top" alt="{{ supercar.name }}">
+            <div class="card supercar-card">
+                <a href="/view/{{ supercar.id }}" class="card-ref"><img src="{{ supercar.image }}" class="card-img-top supercar-img" alt="Image of {{ supercar.name }}"></a>
                 <div class="card-body">
                     <h5 class="card-title">{{ supercar.name }}</h5>
                     <p class="card-text">{{ supercar.description }}</p>
-                    <a href="/view/{{ supercar.id }}" class="btn btn-primary">Learn More</a>
+                    <a href="/view/{{ supercar.id }}" class="btn btn-primary supercar-learn-more-btn">Learn More</a>
                 </div>
             </div>
         </div>

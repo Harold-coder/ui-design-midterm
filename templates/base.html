@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename = 'index.js') }}"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div>
                 <a class="navbar-brand" href="{{ url_for('home') }}">Supercars Search</a>
@@ -21,7 +21,7 @@
             </div>
             <form class="d-flex" id="search-form" action="{{ url_for('search') }}" method="get">
                 <input class="form-control me-2" id="search-input" type="search" placeholder="Search" aria-label="Search" name="query">
-                <button class="btn btn-outline-success search-btn" type="submit">Search</button>
+                <button class="btn search-btn" type="submit">Search</button>
             </form>
         </div>
     </nav>
